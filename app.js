@@ -29,7 +29,7 @@ let timer;
         // Timer Function 
 
         document.addEventListener("DOMContentLoaded", function () {
-            let timeInSeconds = 0; // Default 0 minutes
+            let timeInSeconds = 0; 
             let timerInterval;
             let isRunning = false;
             const timeDisplay = document.querySelector(".time-display");
@@ -44,7 +44,10 @@ let timer;
             userInputButton.textContent = "Set Time";
             userInputButton.classList.add("btn");
             
-            buttonContainer.style.marginTop = "10px";
+            buttonContainer.style.display = "flex";
+            buttonContainer.style.gap = "74px";
+            buttonContainer.style.marginTop = "20px";
+            // buttonContainer.style.marginRight = "10px";
             buttonContainer.appendChild(userInputButton);
             buttonContainer.appendChild(resetButton);
             
@@ -61,7 +64,7 @@ let timer;
                 if (isRunning) {
                     clearInterval(timerInterval);
                     timerInterval = null;
-                    startButton.textContent = "▶"; // Play Icon
+                    startButton.textContent = "▶"; 
                 } else {
                     timerInterval = setInterval(() => {
                         if (timeInSeconds > 0) {
@@ -74,7 +77,7 @@ let timer;
                             startButton.textContent = "▶";
                         }
                     }, 1000);
-                    startButton.textContent = "⏸"; // Pause Icon
+                    startButton.textContent = '❚❚'; 
                 }
                 isRunning = !isRunning;
             }
