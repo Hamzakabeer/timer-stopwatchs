@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer UI</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #2c303d;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .timer-container {
+            text-align: center;
+            background-color: #292e3f;
+            padding: 20px;
+            width: 80%;
+            height: 80vh;
+            border-radius: 10px;
+        }
+        .time-display {
+            font-size: 3rem;
+            margin: 20px 0;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .stopwatchs{
+            background: #246cbf;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            color: white;
+            font-size: 16px;
+        }
+        .btn {
+            background-color: #3a3f50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 9999px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #323745;
+        }
+        .start-button {
+            margin-top: 20px;
+            background-color: #a8c7fa;
+            width: 100%;
+            padding: 15px;
+            border-radius: 9999px;
+            cursor: pointer;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="timer-container">
+        <h2>Timer</h2>
+        <a href="index.html"><button class="stopwatchs">Stopwatch</button></a>
+        <div class="time-display">5:00</div>
+        <div class="buttons">
+            <button class="btn">+0:30</button>
+            <button class="btn">+1:00</button>
+            <button class="btn">+5:00</button>
+        </div>
+        <button class="start-button">▶</button>
+    </div>
+</body>
+</html>

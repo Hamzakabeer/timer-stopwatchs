@@ -1,0 +1,302 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer & stop Watch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+
+
+<script src="app.js"></script>
+</body>
+</html> -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch UI</title>
+    <style>
+        body {
+            background-color: #1e1a16;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            color: #f0c040;
+        }
+        .timer-options {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .timer-options button {
+            background: #8c6500;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            color: white;
+            font-size: 16px;
+        }
+        .timer-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid #8c6500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            position: relative;
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        .controls button {
+            background: #8c6500;
+            border: none;
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            color: white;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="timer-options">
+            <button>Timer</button>
+            <button>Stopwatch</button>
+        </div>
+        <div class="timer-circle" id="display">0.00</div>
+        <div class="controls">
+            <button onclick="startStop()">▶</button>
+            <button onclick="reset()">↻</button>
+        </div>
+    </div>
+    
+    <script>
+        let timer;
+        let isRunning = false;
+        let elapsedTime = 0;
+        function startStop() {
+            if (isRunning) {
+                clearInterval(timer);
+            } else {
+                let startTime = Date.now() - elapsedTime;
+                timer = setInterval(() => {
+                    elapsedTime = Date.now() - startTime;
+                    document.getElementById('display').textContent = (elapsedTime / 1000).toFixed(2);
+                }, 10);
+            }
+            isRunning = !isRunning;
+        }
+        function reset() {
+            clearInterval(timer);
+            elapsedTime = 0;
+            isRunning = false;
+            document.getElementById('display').textContent = "0.00";
+        }
+    </script>
+</body>
+</html> -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .stopwatch {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .timer {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .controls button {
+            font-size: 1em;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        .controls button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="stopwatch">
+        <div class="timer">0.00</div>
+        <div class="controls">
+            <button onclick="startStopwatch()">Start</button>
+            <button onclick="stopStopwatch()">Stop</button>
+            <button onclick="resetStopwatch()">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        let startTime;
+        let elapsedTime = 0;
+        let timerInterval;
+
+        function startStopwatch() {
+            startTime = Date.now() - elapsedTime;
+            timerInterval = setInterval(function printTime() {
+                elapsedTime = Date.now() - startTime;
+                document.querySelector('.timer').textContent = (elapsedTime / 1000).toFixed(2);
+            }, 10);
+        }
+
+        function stopStopwatch() {
+            clearInterval(timerInterval);
+        }
+
+        function resetStopwatch() {
+            clearInterval(timerInterval);
+            elapsedTime = 0;
+            document.querySelector('.timer').textContent = "0.00";
+        }
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch UI</title>
+    <style>
+        body {
+            background-color: #353028;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            color: white;
+        }
+        .timer-options {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .timer-options button {
+            background: #7e5700;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            color: white;
+            font-size: 16px;
+        }
+        .timer-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid #50422b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            position: relative;
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        .controls button {
+            background: #7e5700;
+            border: none;
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            color: white;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="timer-options">
+           <a href="timer.html"><button>Timer</button></a>
+           <a href="index.html"><button>Stopwatch</button></a>
+        </div>
+        <div class="timer-circle" id="display" >0.00</div>
+        <div class="controls">
+            <button id="startStopBtn" onclick="startStop()">▶</button>
+            <button onclick="reset()">↻</button>
+        </div>
+    </div>
+    
+    <script>
+        let timer;
+        let isRunning = false;
+        let elapsedTime = 0;
+        function startStop() {
+            const startStopBtn = document.getElementById('startStopBtn');
+            if (isRunning) {
+                clearInterval(timer);
+                startStopBtn.textContent = '▶'; // Change to 'Start' icon
+            } else {
+                let startTime = Date.now() - elapsedTime;
+                timer = setInterval(() => {
+                    elapsedTime = Date.now() - startTime;
+                    document.getElementById('display').textContent = (elapsedTime / 1000).toFixed(2);
+                }, 10);
+                startStopBtn.textContent = '❚❚'; // Change to 'Pause' icon
+            }
+            isRunning = !isRunning;
+        }
+        function reset() {
+            clearInterval(timer);
+            elapsedTime = 0;
+            isRunning = false;
+            document.getElementById('display').textContent = "0.00";
+            document.getElementById('startStopBtn').textContent = '▶'; // Reset to 'Start' icon
+        }
+    </script>
+</body>
+</html>
