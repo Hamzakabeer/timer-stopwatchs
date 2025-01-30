@@ -43,14 +43,11 @@ let timer;
             resetButton.classList.add("btn");
             userInputButton.textContent = "Set Time";
             userInputButton.classList.add("btn");
-            
-            buttonContainer.style.display = "flex";
-            buttonContainer.style.gap = "74px";
-            buttonContainer.style.marginTop = "20px";
-            // buttonContainer.style.marginRight = "10px";
+        
+            buttonContainer.classList.add("button-container");  // Apply class for styling
             buttonContainer.appendChild(userInputButton);
             buttonContainer.appendChild(resetButton);
-            
+        
             document.querySelector(".timer-container").appendChild(startButton);
             document.querySelector(".timer-container").appendChild(buttonContainer);
         
@@ -115,7 +112,7 @@ let timer;
             buttons[2].addEventListener("click", () => addTime(300));
             userInputButton.addEventListener("click", setTime);
             resetButton.addEventListener("click", resetTimer);
-            
+        
             updateDisplay();
         });
         

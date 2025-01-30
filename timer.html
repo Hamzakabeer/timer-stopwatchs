@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,22 +15,32 @@
             color: white;
             font-family: Arial, sans-serif;
         }
+
+        .button-container {
+            display: flex;
+            gap: 74px;
+            margin-top: 20px;
+        }
+
         .timer-container {
             text-align: center;
             background-color: #292e3f;
             padding: 20px;
             border-radius: 10px;
         }
+
         .time-display {
             font-size: 3rem;
             margin: 20px 0;
         }
+
         .buttons {
             display: flex;
             justify-content: center;
             gap: 10px;
         }
-        .stopwatchs{
+
+        .stopwatchs {
             background: #246cbf;
             border: none;
             padding: 10px 20px;
@@ -38,6 +49,7 @@
             color: white;
             font-size: 16px;
         }
+
         .btn {
             background-color: #3a3f50;
             color: white;
@@ -46,9 +58,11 @@
             border-radius: 9999px;
             cursor: pointer;
         }
+
         .btn:hover {
             background-color: #323745;
         }
+
         .start-button {
             margin-top: 20px;
             background-color: #a8c7fa;
@@ -60,6 +74,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="timer-container">
         <h2>Timer</h2>
@@ -74,4 +89,5 @@
     </div>
     <script src="app.js"></script>
 </body>
+
 </html>
