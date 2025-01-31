@@ -123,7 +123,7 @@ let timer;
                     function setTime() {
                         let userInput = prompt("Enter time (HH, MM, SS, HH:MM, MM:SS, or HH:MM:SS Agr English kachi hai tu ma samghta hn agr second ma likhna hai tu 1,2 ya 40 do or minute ma tu 30:59 asa semicolum laga gi bich ma):");
                         if (!userInput) {
-                            alert("Please put the timer number");
+                            alert("Bhai mugha ku khali chora mara sa dushmani hai kia");
                             return;
                         }
                         let newTime = parseTimeInput(userInput);
