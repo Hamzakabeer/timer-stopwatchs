@@ -26,6 +26,7 @@ body {
     color: white;
     font-size: 16px;
 }
+
 .timer-circle {
     width: 200px;
     height: 200px;
@@ -50,4 +51,7 @@ body {
     cursor: pointer;
     color: white;
     font-size: 16px;
+}
+.controls  :hover{
+    background-color: #a97911;
 }
