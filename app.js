@@ -28,8 +28,9 @@ let timer;
 
         // Timer Function 
                 
+   
                 document.addEventListener("DOMContentLoaded", function () {
-                    let timeInSeconds = 0; 
+                    let timeInSeconds = 0;
                     let timerInterval;
                     let isRunning = false;
                     const timeDisplay = document.querySelector(".time-display");
@@ -44,7 +45,7 @@ let timer;
                     userInputButton.textContent = "Set Time";
                     userInputButton.classList.add("btn");
                 
-                    buttonContainer.classList.add("button-container");  
+                    buttonContainer.classList.add("button-container");
                     buttonContainer.appendChild(userInputButton);
                     buttonContainer.appendChild(resetButton);
                 
@@ -70,7 +71,7 @@ let timer;
                         if (isRunning) {
                             clearInterval(timerInterval);
                             timerInterval = null;
-                            startButton.textContent = "▶"; 
+                            startButton.textContent = "▶";
                         } else {
                             timerInterval = setInterval(() => {
                                 if (timeInSeconds > 0) {
@@ -83,7 +84,7 @@ let timer;
                                     startButton.textContent = "▶";
                                 }
                             }, 1000);
-                            startButton.textContent = '❚❚'; 
+                            startButton.textContent = '❚❚';
                         }
                         isRunning = !isRunning;
                     }
@@ -98,7 +99,7 @@ let timer;
                 
                         userInput = userInput.trim();
                         let timeParts = userInput.split(":").map(num => parseInt(num, 10) || 0);
-                        
+                
                         let hours = 0, minutes = 0, seconds = 0;
                         if (timeParts.length === 1) {
                             seconds = timeParts[0];
@@ -121,9 +122,9 @@ let timer;
                     }
                 
                     function setTime() {
-                        let userInput = prompt("Enter time (HH, MM, SS, HH:MM, MM:SS, or HH:MM:SS Agr English kachi hai tu ma samghta hn agr second ma likhna hai tu 1,2 ya 40 do or minute ma tu 30:59 asa semicolum laga gi bich ma):");
+                        let userInput = prompt("Enter time in HH:MM:SS format:");
                         if (!userInput) {
-                            alert("Bhai mugha ku khali chora mara sa dushmani hai kia");
+                            alert("Please enter a valid time.");
                             return;
                         }
                         let newTime = parseTimeInput(userInput);
@@ -136,7 +137,7 @@ let timer;
                             isRunning = false;
                             startButton.textContent = "▶";
                         } else {
-                            alert("Invalid input! Please enter time in HH, MM, SS, HH:MM, MM:SS, or HH:MM:SS format.");
+                            alert("Invalid input! Please enter time in HH:MM:SS format.");
                         }
                     }
                 
@@ -149,13 +150,71 @@ let timer;
                         startButton.textContent = "▶";
                     }
                 
+                    // Function to enforce HH:MM:SS format
+                    function enforceTimeFormat() {
+                        let text = timeDisplay.textContent;
+                        let newText = "";
+                
+                        // Remove any non-numeric characters
+                        text = text.replace(/[^0-9]/g, '');
+                
+                        // Ensure only 6 digits are allowed (HHMMSS)
+                        if (text.length > 6) {
+                            text = text.slice(0, 6);
+                        }
+                
+                        // Add colons in the correct positions
+                        for (let i = 0; i < text.length; i++) {
+                            if (i === 2 || i === 4) {
+                                newText += ":";
+                            }
+                            newText += text[i];
+                        }
+                
+                        // Update the display with formatted text
+                        timeDisplay.textContent = newText;
+                    }
+                
+                    // Function to handle cursor position and editing
+                    function handleEditing(event) {
+                        let cursorPosition = getCursorPosition(timeDisplay);
+                        enforceTimeFormat();
+                
+                        // Restore cursor position after formatting
+                        setCursorPosition(timeDisplay, cursorPosition);
+                    }
+                
+                    // Helper function to get cursor position
+                    function getCursorPosition(element) {
+                        let selection = window.getSelection();
+                        let range = selection.getRangeAt(0);
+                        let preCaretRange = range.cloneRange();
+                        preCaretRange.selectNodeContents(element);
+                        preCaretRange.setEnd(range.endContainer, range.endOffset);
+                        return preCaretRange.toString().length;
+                    }
+                
+                    // Helper function to set cursor position
+                    function setCursorPosition(element, position) {
+                        let range = document.createRange();
+                        let selection = window.getSelection();
+                        range.setStart(element.childNodes[0], position);
+                        range.collapse(true);
+                        selection.removeAllRanges();
+                        selection.addRange(range);
+                    }
+                
+                    // Event listener for input
+                    timeDisplay.addEventListener("input", handleEditing);
+                
+                    // Event listener for blur (when user finishes editing)
                     timeDisplay.addEventListener("blur", function () {
                         let newTime = parseTimeInput(timeDisplay.textContent);
                         if (newTime !== null) {
                             timeInSeconds = newTime;
                             updateDisplay();
                         } else {
-                            alert("Invalid input! Please enter time in HH, MM, SS, HH:MM, MM:SS, or HH:MM:SS format.");
+                            alert("Invalid input! Please enter time in HH:MM:SS format.");
                             updateDisplay();
                         }
                     });
@@ -169,4 +228,3 @@ let timer;
                 
                     updateDisplay();
                 });
-                
